@@ -1,0 +1,67 @@
+
+
+  <p class="mt-0">Please enter the OTP here.</p>
+  <ion-row class="otpRow">
+    <ion-col class="otpdiv">
+      <ion-input
+        class="x"
+        numberonly
+        type="tel"
+        #otp1
+        maxLength="1"
+        [(ngModel)]="OTP.first"
+        (keyup)="otpController($event, otp2, '')"
+      ></ion-input>
+      <ion-input
+        class="x"
+        numberonly
+        type="tel"
+        #otp2
+        maxLength="1"
+        [(ngModel)]="OTP.second"
+        (keyup)="otpController($event, otp3, otp1)"
+      ></ion-input>
+      <ion-input
+        class="x"
+        numberonly
+        type="tel"
+        #otp3
+        maxLength="1"
+        [(ngModel)]="OTP.third"
+        (keyup)="otpController($event, otp4, otp2)"
+      ></ion-input>
+      <ion-input
+        class="x"
+        numberonly
+        type="tel"
+        #otp4
+        maxLength="1"
+        [(ngModel)]="OTP.four"
+        (keyup)="otpController($event, otp5, otp3)"
+      ></ion-input>
+      <ion-input
+        class="x"
+        numberonly
+        type="tel"
+        #otp5
+        maxLength="1"
+        [(ngModel)]="OTP.five"
+        (keyup)="otpController($event, otp6, otp4)"
+      ></ion-input>
+      <ion-input
+        class="x"
+        numberonly
+        type="tel"
+        #otp6
+        maxLength="1"
+        [(ngModel)]="OTP.six"
+        (keyup)="otpController($event, '', otp5, 6)"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+   <div>
+    <ion-button class="clickBtn"
+    shape="round"
+    fill="outline" (click)="verifyOtp()">OTP Verify</ion-button>
+  </div> 
+ 
