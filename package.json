@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@angular-devkit/build-angular": "^19.1.6",
+    "@angular/cli": "^19.1.6",
+    "ng-packagr": "^19.1.2"
+  }
+}

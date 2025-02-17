@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 
 @Component({
@@ -8,6 +8,7 @@ import { Subject, Subscription } from 'rxjs';
   styleUrl: './otp.component.css'
 })
 export class OtpComponent {
+
   OTP = {
     first: '',
     second: '',
@@ -17,8 +18,8 @@ export class OtpComponent {
     six: '',
   };
 
+  @Input() clear:boolean = false;
   @Output() otpValues = new EventEmitter();
-
   otpSub!: Subscription;
   clearOTP = new Subject<boolean>();  
   
@@ -30,15 +31,26 @@ export class OtpComponent {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges): void{
+    console.log("hello",changes)
+   if(changes["clear"].currentValue){
+  this.OTP ={
+  first: '',
+  second: '',
+  third: '',
+  four: '',
+  five: '',
+  six: '',
+   }
+ }
+   console.log(this.OTP)
+}
+
   ngOnDestroy() {
     if (this.otpSub) {
       this.otpSub.unsubscribe();
     }
   } 
-
-  clearEnterOTP(value: boolean) {
-    this.clearOTP.next(value);
-  }
 
   private resetOTP() {
     this.OTP = {
@@ -60,7 +72,7 @@ export class OtpComponent {
       }
     }, 0);
   } 
-
+  
  verifyOtp(){
     if (Object.values(this.OTP).every((val) => val != '')){
       console.log('submit');
@@ -69,5 +81,4 @@ export class OtpComponent {
       this.otpValues.emit('');
     }
   } 
-
 }

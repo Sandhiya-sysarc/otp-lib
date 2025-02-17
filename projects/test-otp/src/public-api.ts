@@ -6,4 +6,4 @@ export * from './lib/test-otp.service';
 export * from './lib/test-otp.component';
 export * from './lib/otp/otp.component';
 export * from './lib/test-otp.module';
-// comitting on otp-component branch
+// comitting on otp-component branchz

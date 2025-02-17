@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
       test-otp works!
     </p>
   `,
-  styles: ``
+  styles: ``,
+  standalone: false,
+
 })
 export class TestOtpComponent {
 
